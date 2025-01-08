@@ -2,11 +2,13 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.kapt)
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
     namespace = "dev.xget.ualachallenge"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "dev.xget.ualachallenge"
@@ -56,4 +58,23 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Networking (Retrofit, Gson, Logging)
+    implementation(libs.retrofit) // Retrofit for API calls
+    implementation(libs.converter.gson) // Gson converter for Retrofit
+    implementation(libs.logging.interceptor) // Logging for HTTP requests
+
+    // JSON Parsing
+    implementation(libs.gson)
+
+    //Icons
+    implementation (libs.androidx.material.icons.extended)
+
+
+    //ksp and dagger
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+
+    implementation(libs.androidx.hilt.navigation.compose)
+
 }
