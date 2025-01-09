@@ -1,5 +1,6 @@
 package dev.xget.ualachallenge.repositories.cities
 
+import android.util.Log
 import com.google.gson.Gson
 import dev.xget.ualachallenge.data.cities.local.CitiesLocalDataSource
 import dev.xget.ualachallenge.data.cities.remote.CitiesRemoteDataSource
@@ -21,14 +22,14 @@ class CitiesRepository @Inject constructor(
         val citiesJson = citiesLocalDataSource.getCitiesJson()
         val gson = Gson()
 
-        if (citiesJson != null) {
-            return citiesJson.toCityList()
+        return if (citiesJson != null) {
+            Log.d("CitiesRepository", "Found cities in cache , ${citiesJson.length()}")
+             citiesJson.toCityList()
         } else {
             //If there is no cities json in the cache, get the cities from the remote
             val citiesResponse = citiesRemoteDataSource.getCities()
-
-            citiesLocalDataSource.saveCitiesJson(JSONObject(gson.toJson(citiesResponse)))
-            return citiesResponse.map { it.toCity() }
+            citiesLocalDataSource.saveCitiesJson(JSONArray(gson.toJson(citiesResponse)))
+            citiesResponse.map { it.toCity() }
         }
     }
 }

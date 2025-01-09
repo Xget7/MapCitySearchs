@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.compose) apply false
     alias(libs.plugins.kotlin.kapt) apply false
+    id("androidx.room") version "2.6.1" apply false
 }
 
 buildscript {

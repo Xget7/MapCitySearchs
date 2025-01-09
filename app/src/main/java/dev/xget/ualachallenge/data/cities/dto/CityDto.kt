@@ -10,26 +10,27 @@ data class CityDto(
     val name: String,
     @SerializedName("_id")
     val id: String,
-    val coordinates: CoordinatesDto,
+    @SerializedName("coord")
+    val coordinates: CoordinatesDto? = null
 ){
     fun toCity(): City {
         return City(
             id = id,
             name = name,
             country = country,
-            coordinates = coordinates.toCoordinates()
+            coordinates = coordinates?.toCoordinates()
         )
     }
 }
 
 data class CoordinatesDto(
-    val latitude: Double,
-    val longitude: Double,
+    val lon: Double,
+    val lat: Double,
 ){
     fun toCoordinates(): Coordinates {
         return Coordinates(
-            latitude = latitude,
-            longitude = longitude,
+            latitude = lat,
+            longitude = lon,
         )
     }
 }

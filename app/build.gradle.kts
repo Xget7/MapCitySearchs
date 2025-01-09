@@ -4,6 +4,9 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.kapt)
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    id ("com.google.dagger.hilt.android")
+    id("androidx.room")
+
 }
 
 android {
@@ -39,6 +42,13 @@ android {
     buildFeatures {
         compose = true
     }
+    kapt {
+        correctErrorTypes = true
+    }
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
+
 }
 
 dependencies {
@@ -76,5 +86,11 @@ dependencies {
     kapt(libs.hilt.compiler)
 
     implementation(libs.androidx.hilt.navigation.compose)
+
+    //Room db
+
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler)
 
 }
