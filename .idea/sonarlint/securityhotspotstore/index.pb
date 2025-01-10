@@ -98,3 +98,15 @@ Kapp/src/main/java/dev/xget/ualachallenge/presentation/maps/CityMapScreen.kt,f/
 Napp/src/main/java/dev/xget/ualachallenge/presentation/components/FilterChip.kt,c/f/cfee8a557574145554ea399672527d3561804319
 „
 Tapp/src/main/java/dev/xget/ualachallenge/presentation/maps/CityMapScreenViewModel.kt,b/2/b2b61fe6e0d68dd134302844bd6e2a69293db3a8
+}
+Mapp/src/test/java/dev/xget/ualachallenge/repositories/CitiesRepositoryTest.kt,e/4/e41ef10b4acd924331f2c0d7b3625d6560477aff
+{
+Kapp/src/test/java/dev/xget/ualachallenge/local/FakeCitiesLocalDataSource.kt,9/1/9162aa0805ac8cbe3f623827d128b7949b90b754
+†
+Vapp/src/main/java/dev/xget/ualachallenge/data/cities/remote/CitiesRemoteDataSourceI.kt,c/6/c612a8e41ed93d57b83110b80a3b85da489b1665
+}
+Mapp/src/test/java/dev/xget/ualachallenge/remote/FakeCitiesRemoteDataSource.kt,6/e/6e8f098641e95218e090ca17d4b5cfe4f6ea4025
+s
+Capp/src/test/java/dev/xget/ualachallenge/java/android/util/Log.java,0/d/0dbd6ce52659a8a218506acf9104b14aad4b9a8f
+W
+'app/src/test/java/android/util/Log.java,6/b/6b3d0619496ba64f99e604f7a0ac534cc4341615

@@ -74,6 +74,23 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+    //Testing
+    // For Mockito
+    testImplementation (libs.mockito.core)
+    testImplementation (libs.mockito.inline) // For mocking final classes and methods
+
+    // For Mocking Room and Paging (if using Room and Paging in the repository)
+    testImplementation (libs.androidx.room.testing)
+    testImplementation (libs.androidx.paging.common.ktx)
+    testImplementation(libs.test.androidx.paging)
+
+    // For Kotlin Coroutine testing
+    testImplementation(libs.kotlinx.coroutines.test)
+
+    // For Truth (assertions)
+    testImplementation (libs.truth)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

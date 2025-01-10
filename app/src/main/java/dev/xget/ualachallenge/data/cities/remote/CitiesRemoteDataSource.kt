@@ -7,9 +7,9 @@ import kotlinx.coroutines.withContext
 class CitiesRemoteDataSource(
     private val citiesApi: CitiesApi,
     private val ioDispatcher: CoroutineDispatcher
-) {
+) : CitiesRemoteDataSourceI {
 
-    suspend fun getCities(): List<CityDto> =
+    override suspend fun getCities(): List<CityDto> =
         withContext(ioDispatcher) {
             citiesApi.getCities()
         }

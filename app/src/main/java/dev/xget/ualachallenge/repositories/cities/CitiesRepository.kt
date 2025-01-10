@@ -6,8 +6,10 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
 import dev.xget.ualachallenge.data.cities.local.CitiesLocalDataSource
+import dev.xget.ualachallenge.data.cities.local.CitiesLocalDataSourceI
 import dev.xget.ualachallenge.data.cities.local.entity.CityEntity
 import dev.xget.ualachallenge.data.cities.remote.CitiesRemoteDataSource
+import dev.xget.ualachallenge.data.cities.remote.CitiesRemoteDataSourceI
 import dev.xget.ualachallenge.presentation.ui_data.City
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
@@ -17,8 +19,8 @@ import javax.inject.Inject
 
 
 class CitiesRepository @Inject constructor(
-    private val citiesRemoteDataSource: CitiesRemoteDataSource,
-    private val citiesLocalDataSource: CitiesLocalDataSource
+    private val citiesRemoteDataSource: CitiesRemoteDataSourceI,
+    private val citiesLocalDataSource: CitiesLocalDataSourceI
 ) {
 
     fun getCities(
