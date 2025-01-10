@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -21,11 +23,22 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+
+
+        val properties = Properties()
+        file("../local.properties").inputStream().use {
+            properties.load(it)
+        }
+        val apiKey = properties.getProperty("MAPS_API_KEY")
+        manifestPlaceholders["MAPS_API_KEY"] = apiKey
     }
 
     buildTypes {
+        android.buildFeatures.buildConfig = true
+
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
