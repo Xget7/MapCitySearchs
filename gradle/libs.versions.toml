@@ -1,5 +1,7 @@
 [versions]
 agp = "8.8.0-alpha09"
+hiltAndroidCompiler = "2.51.1"
+hiltAndroidTesting = "2.51.1"
 kotlin = "2.0.0"
 coreKtx = "1.15.0"
 junit = "4.13.2"
@@ -30,6 +32,8 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-paging-common-ktx = { module = "androidx.paging:paging-common-ktx", version.ref = "pagingRuntimeKtx" }
 androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "pagingRuntimeKtx" }
 androidx-paging-runtime-ktx = { module = "androidx.paging:paging-runtime-ktx", version.ref = "pagingRuntimeKtx" }
+hilt-android-compiler-v2511 = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidCompiler" }
+hilt-android-testing-v2511 = { module = "com.google.dagger:hilt-android-testing", version.ref = "hiltAndroidTesting" }
 test-androidx-paging = { group = "androidx.paging", name = "paging-testing" , version.ref = "pagingRuntimeKtx" }
 
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }

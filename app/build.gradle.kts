@@ -22,7 +22,9 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+//        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "dev.xget.ualachallenge.hilt.CustomTestRunner"
+
 
 
 
@@ -88,6 +90,12 @@ dependencies {
     // For Kotlin Coroutine testing
     testImplementation(libs.kotlinx.coroutines.test)
 
+    // For Hilt
+    androidTestImplementation(libs.hilt.android.testing.v2511)
+    kaptTest(libs.hilt.android.compiler.v2511)
+    kaptAndroidTest(libs.hilt.android.compiler.v2511)
+
+    
     // For Truth (assertions)
     testImplementation (libs.truth)
 

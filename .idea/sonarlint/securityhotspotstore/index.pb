@@ -110,3 +110,7 @@ s
 Capp/src/test/java/dev/xget/ualachallenge/java/android/util/Log.java,0/d/0dbd6ce52659a8a218506acf9104b14aad4b9a8f
 W
 'app/src/test/java/android/util/Log.java,6/b/6b3d0619496ba64f99e604f7a0ac534cc4341615
+q
+Aapp/src/androidTest/java/dev/xget/ualachallenge/HomeScreenTest.kt,0/a/0ab88d9cdf24cc3e80e3976d3a0acd43238c03de
+x
+Happ/src/androidTest/java/dev/xget/ualachallenge/hilt/CustomTestRunner.kt,4/3/430d95b9cee90629fc8f30622d93214fed04fd53
