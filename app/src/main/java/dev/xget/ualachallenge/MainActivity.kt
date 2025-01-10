@@ -12,13 +12,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 import dev.xget.ualachallenge.presentation.home.CitiesBrowserHome
 import dev.xget.ualachallenge.presentation.home.CitiesBrowserHomeViewModel
+import dev.xget.ualachallenge.presentation.maps.CityMapScreen
+import dev.xget.ualachallenge.presentation.maps.CityMapScreenContent
 import dev.xget.ualachallenge.presentation.screens.Screen
 import dev.xget.ualachallenge.ui.theme.UalaChallengeTheme
 
@@ -32,26 +36,20 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 NavHost(navController = navController, startDestination = Screen.Home.route) {
                     composable(Screen.Home.route) {
-                        CitiesBrowserHome()
+                        CitiesBrowserHome(navController = navController)
                     }
+                    composable(
+                        route = Screen.FullMapsScreen.route + "/{cityId}",
+                        arguments = listOf(navArgument("cityId") { type = NavType.StringType })
+                    ) {
+                        CityMapScreen(
+                            navController = navController,
+                            modifier = Modifier,
+                        )
+                    }
+
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    UalaChallengeTheme {
-        Greeting("Android")
     }
 }

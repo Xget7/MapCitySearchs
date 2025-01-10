@@ -1,8 +1,10 @@
 package dev.xget.ualachallenge.data.cities.dto
 
 import com.google.gson.annotations.SerializedName
-import dev.xget.ualachallenge.presentation.City
-import dev.xget.ualachallenge.presentation.Coordinates
+import dev.xget.ualachallenge.data.cities.local.entity.CityEntity
+import dev.xget.ualachallenge.data.cities.local.entity.CoordinatesEntity
+import dev.xget.ualachallenge.presentation.ui_data.City
+import dev.xget.ualachallenge.presentation.ui_data.Coordinates
 
 
 data class CityDto(
@@ -21,6 +23,15 @@ data class CityDto(
             coordinates = coordinates?.toCoordinates()
         )
     }
+
+    fun toCityEntity(): CityEntity {
+        return CityEntity(
+            id = id,
+            name = name,
+            country = country,
+            coordinates = coordinates?.toEntityCoordinates()
+        )
+    }
 }
 
 data class CoordinatesDto(
@@ -29,6 +40,13 @@ data class CoordinatesDto(
 ){
     fun toCoordinates(): Coordinates {
         return Coordinates(
+            latitude = lat,
+            longitude = lon,
+        )
+    }
+
+    fun toEntityCoordinates(): CoordinatesEntity {
+        return CoordinatesEntity(
             latitude = lat,
             longitude = lon,
         )

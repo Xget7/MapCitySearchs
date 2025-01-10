@@ -1,16 +1,27 @@
-package dev.xget.ualachallenge.presentation
+package dev.xget.ualachallenge.presentation.ui_data
+
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+import com.google.maps.android.compose.CameraPositionState
 
 data class City(
     val country: String,
     val name: String,
     val id: String,
-    val coordinates: Coordinates? = null
+    val coordinates: Coordinates? = null,
+    val isFavorite: Boolean = false
 )
 
 data class Coordinates(
     val latitude: Double,
     val longitude: Double,
-)
+){
+    fun toCameraPositionState() = CameraPositionState(
+        CameraPosition.fromLatLngZoom(LatLng(latitude, longitude), 15f)
+    )
+
+    fun toLatLng() = LatLng(latitude, longitude)
+}
 
 val mockCities = listOf(
     City(

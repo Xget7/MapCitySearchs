@@ -7,6 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import dev.xget.ualachallenge.data.cities.local.CitiesLocalDataSource
+import dev.xget.ualachallenge.data.cities.local.dao.CityDao
 import dev.xget.ualachallenge.data.cities.remote.CitiesApi
 import dev.xget.ualachallenge.data.cities.remote.CitiesRemoteDataSource
 import dev.xget.ualachallenge.repositories.cities.CitiesRepository
@@ -36,10 +37,10 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideCitiesLocalDataSource(
-        @ApplicationContext context: Context,
+        cityDao: CityDao,
         ioDispatcher: CoroutineDispatcher
     ): CitiesLocalDataSource {
-        return CitiesLocalDataSource(ioDispatcher = ioDispatcher, context = context)
+        return CitiesLocalDataSource(ioDispatcher = ioDispatcher, cityDao = cityDao)
     }
 
     @Provides

@@ -1,9 +1,7 @@
 package dev.xget.ualachallenge.data.utils
 
-import dev.xget.ualachallenge.data.cities.dto.CityDto
-import dev.xget.ualachallenge.data.cities.dto.CoordinatesDto
-import dev.xget.ualachallenge.presentation.City
-import dev.xget.ualachallenge.presentation.Coordinates
+import dev.xget.ualachallenge.presentation.ui_data.City
+import dev.xget.ualachallenge.presentation.ui_data.Coordinates
 import org.json.JSONArray
 import org.json.JSONObject
 

@@ -3,27 +3,40 @@ package dev.xget.ualachallenge.presentation.components
 import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import dev.xget.ualachallenge.presentation.City
+import dev.xget.ualachallenge.presentation.ui_data.City
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.SegmentedButtonDefaults.Icon
 import androidx.compose.material3.Text
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import dev.xget.ualachallenge.presentation.Coordinates
+import dev.xget.ualachallenge.presentation.ui_data.Coordinates
 
 @Composable
-fun CityCardItem(modifier: Modifier = Modifier, city: City, onClick: () -> Unit) {
+fun CityCardItem(
+    city: City,
+    onClick: () -> Unit,
+    onFavoriteClick: (Boolean) -> Unit,
+    isSelected: Boolean = false,
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFFFFFFFF)),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
         shape = RoundedCornerShape(12.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+        onClick = onClick
     ) {
         Column(
             modifier = Modifier
@@ -31,15 +44,29 @@ fun CityCardItem(modifier: Modifier = Modifier, city: City, onClick: () -> Unit)
                 .fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            Row (
+            Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
-            ){
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+            ) {
                 Text(
                     text = city.name + ", ${city.country}",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.Black
                 )
+
+                IconButton(
+                    onClick = { onFavoriteClick(!city.isFavorite) }
+                ) {
+                    Icon(
+                        imageVector = if (city.isFavorite) Icons.Default.Favorite else Icons.Outlined.FavoriteBorder,
+                        contentDescription = "Favorite",
+                        tint = if (city.isFavorite) Color.Red else Color.LightGray,
+                        modifier = Modifier.size(30.dp)
+                    )
+                }
 
             }
 
@@ -69,5 +96,5 @@ fun PreviewCityCard() {
         id = "713514",
         coordinates = Coordinates(latitude = 44.416668, longitude = 34.049999)
     )
-    CityCardItem(city = city){}
+    CityCardItem(city = city, onFavoriteClick = {}, onClick = {})
 }

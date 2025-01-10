@@ -1,9 +1,13 @@
 package dev.xget.ualachallenge.data.di
 
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import dev.xget.ualachallenge.data.cities.local.dao.CityDao
+import dev.xget.ualachallenge.data.cities.local.database.CitiesDatabase
 import dev.xget.ualachallenge.data.cities.remote.CitiesApi
 import dev.xget.ualachallenge.data.utils.DataConstants.BASE_URL
 import retrofit2.Retrofit
@@ -26,6 +30,14 @@ object DataModule {
     @Provides
     fun provideCitiesApi(retrofit: Retrofit): CitiesApi {
         return retrofit.create(CitiesApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideCityDao(
+        @ApplicationContext context: Context
+    ): CityDao {
+        return CitiesDatabase.getDatabase(context).cityDao()
     }
 
 }
