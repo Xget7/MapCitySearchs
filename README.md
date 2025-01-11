@@ -13,8 +13,7 @@ The **Uala Challenge** is an Android app developed to demonstrate efficient hand
 - [Assumptions](#assumptions)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
-- [Testing](#testing)
-
+  
 ---
 
 ## Project Overview
