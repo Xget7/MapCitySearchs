@@ -59,6 +59,9 @@ To manage the large dataset of cities efficiently, the following steps were impl
 
 ## Technical Decisions
 
+- **Retrofit*:
+  - Easy implementation to consume API data with clean code. 
+
 - **Room Database**:
   - Chosen for its ease of use, integration with LiveData, and support for complex queries.
   
@@ -71,6 +74,9 @@ To manage the large dataset of cities efficiently, the following steps were impl
 - **Testing**:
   - Comprehensive unit tests were written to ensure the correctness of SQL queries and the search logic.
   - UI tests validated the functionality of the search interface and user interactions.
+ 
+- **MVVM**:
+  - Also it has MVVM architecture pattern (without domain layer) and dependency inversion for better and scalable development.
 
 ---
 
@@ -86,10 +92,11 @@ To manage the large dataset of cities efficiently, the following steps were impl
 
 - **Android Jetpack Components**:
   - Room Database
+  - Retrofit 
   - Paging Library
-  - LiveData
-- **Maps API**: For geographical visualization.
-- **JUnit & Espresso**: For unit and UI testing.
+  - Coroutines and Flow
+- **Google Maps API**: For geographical visualization and navigation.
+- **JUnit , Compose test and Hilt**: For unit and UI testing.
 
 ---
 
