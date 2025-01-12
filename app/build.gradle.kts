@@ -92,10 +92,11 @@ dependencies {
 
     // For Hilt
     androidTestImplementation(libs.hilt.android.testing.v2511)
+    androidTestImplementation(project(":app"))
     kaptTest(libs.hilt.android.compiler.v2511)
     kaptAndroidTest(libs.hilt.android.compiler.v2511)
 
-    
+
     // For Truth (assertions)
     testImplementation (libs.truth)
 

@@ -1,11 +1,8 @@
 package dev.xget.ualachallenge.presentation.home
 
-import android.annotation.SuppressLint
 import android.content.res.Configuration
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -14,28 +11,20 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.FilterChip
-import androidx.compose.material3.FilterChipDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.key
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -45,12 +34,12 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
-import dev.xget.ualachallenge.presentation.ui_data.City
 import dev.xget.ualachallenge.presentation.components.CitiesSearchBar
 import dev.xget.ualachallenge.presentation.components.CityCardItem
 import dev.xget.ualachallenge.presentation.components.FavoriteFilterChip
 import dev.xget.ualachallenge.presentation.maps.CityMapScreenContent
 import dev.xget.ualachallenge.presentation.screens.Screen
+import dev.xget.ualachallenge.presentation.ui_data.City
 import dev.xget.ualachallenge.presentation.ui_data.mockCities
 import kotlinx.coroutines.flow.flowOf
 
@@ -84,9 +73,6 @@ fun CitiesBrowserHome(
         selectedCity = state.value.selectedCity,
         onCityClick = viewModel::onCityClick,
     )
-
-
-
 }
 
 @Composable
@@ -123,8 +109,6 @@ fun CitiesBrowserHomeContent(
             }
         }
         Box(modifier = Modifier.fillMaxSize()) {
-
-
             if (isLoading) {
                 Column(
                     modifier = Modifier
@@ -132,7 +116,7 @@ fun CitiesBrowserHomeContent(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
-                    CircularProgressIndicator()
+                    CircularProgressIndicator(modifier = Modifier.testTag("LoadingIndicator"))
                 }
             } else {
                 if (isLandscape) {
@@ -201,6 +185,7 @@ fun CitiesList(
         modifier = modifier
             .fillMaxWidth()
             .padding(8.dp)
+            .testTag("lazy_column_city")
     ) {
         item {
             itemScrollable()
@@ -236,9 +221,9 @@ fun CitiesBrowserHomePreview() {
 }
 
 @Composable
-fun FakeLazyPagingItems(): LazyPagingItems<City> {
+fun FakeLazyPagingItems(customCities: List<City> = mockCities): LazyPagingItems<City> {
 
-    val fakePagingData = PagingData.from(mockCities)
+    val fakePagingData = PagingData.from(customCities)
 
     val fakePagingFlow = flowOf(fakePagingData)
     return fakePagingFlow.collectAsLazyPagingItems()
