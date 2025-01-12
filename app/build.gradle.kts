@@ -76,6 +76,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.navigation.testing)
 
     //Testing
     // For Mockito
@@ -92,6 +93,7 @@ dependencies {
 
     // For Hilt
     androidTestImplementation(libs.hilt.android.testing.v2511)
+    androidTestImplementation(project(":app"))
     androidTestImplementation(project(":app"))
     kaptTest(libs.hilt.android.compiler.v2511)
     kaptAndroidTest(libs.hilt.android.compiler.v2511)

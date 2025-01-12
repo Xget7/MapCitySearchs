@@ -110,3 +110,7 @@ q
 Aapp/src/androidTest/java/dev/xget/ualachallenge/HomeScreenTest.kt,0/a/0ab88d9cdf24cc3e80e3976d3a0acd43238c03de
 x
 Happ/src/androidTest/java/dev/xget/ualachallenge/hilt/CustomTestRunner.kt,4/3/430d95b9cee90629fc8f30622d93214fed04fd53
+‚
+Rapp/src/androidTest/java/dev/xget/ualachallenge/local/FakeCitiesLocalDataSource.kt,6/1/61fbd30151ed0a095da82b071e8505e1641cbf91
+„
+Tapp/src/androidTest/java/dev/xget/ualachallenge/remote/FakeCitiesRemoteDataSource.kt,d/5/d514bff041b561ec25bb7aebe20f3ad759d764ac
