@@ -107,3 +107,4 @@ To manage the large dataset of cities efficiently, the following steps were impl
 3. Sync Gradle files and resolve dependencies.
 4. Run the app on an emulator or physical device.
 
+I didn't use different branches for features / fixes or release but I all my experience is based on that way of work. Branch -> Approved -> Merge in Release 1.x.x etc
